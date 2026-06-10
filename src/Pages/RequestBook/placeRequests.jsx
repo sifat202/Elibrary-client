@@ -51,7 +51,9 @@ const PlaceRequests = () => {
             bookId: book._id,
             bookTitle: book.title,
             lenderEmail: book.email,
+            
             borrowerEmail: user.email,
+            borrowerName:user.displayName,
             durationDays: d,
             durationHours: h,
             durationMinutes: m

@@ -14,6 +14,8 @@ const Navbar = () => {
     </>
     const Navlinks = <>
         <Link className='px-4 py-2 text-xs text-gray-500' to={'/addBooks'}>Add Book</Link>
+        <Link className='px-4 py-2 text-xs text-gray-500' to={'/manageBooks'}>Manage Books</Link>
+
     </>
 
     const handleGoogleLogin = () => {

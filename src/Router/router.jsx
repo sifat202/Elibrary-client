@@ -3,6 +3,8 @@ import Homelayout from "../Homelayout/Homelayout";
 import Home from "../Pages/Home";
 import AddBook from "../Pages/AddBooks";
 import Books from "../Pages/Books/Books";
+import ManageBooks from "../Pages/Manage/ManageBooks";
+import placeRequests from "../Pages/RequestBook/placeRequests";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,15 @@ export const router = createBrowserRouter([
         {
             path:"books",
             element:<Books></Books>
+        },
+        {
+            path:"manageBooks",
+            element:<ManageBooks></ManageBooks>
+        },
+        {
+            path:"request/:id"
+            ,
+            Component:placeRequests
         }
     ]
   }

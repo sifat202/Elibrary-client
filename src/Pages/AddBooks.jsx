@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../Authpovider/CustomHook'; // Adjust this path to match your file layout
 import api from '../Api/api'; // Adjust this path to your centralized Axios file
+import Swal from 'sweetalert2';
 
 const AddBook = () => {
     const { user } = useAuth();
@@ -9,7 +10,7 @@ const AddBook = () => {
     const handleAddBook = (e) => {
         e.preventDefault();
         setLoading(true);
-        
+
         const form = e.target;
         const title = form.title.value;
         const imgUrl = form.imgUrl.value;
@@ -17,7 +18,12 @@ const AddBook = () => {
 
         // If a malicious user tries to bypass the UI disabled button state
         if (!email) {
-            alert("You must be signed in to post a book.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You must be signed in to post a book.',
+                confirmButtonColor: '#006A4E'
+            });
             setLoading(false);
             return;
         }
@@ -29,13 +35,26 @@ const AddBook = () => {
             .then((res) => {
                 // MongoDB response structure returns an insertedId upon success
                 if (res.data.insertedId) {
-                    alert('✨ Book published successfully to Elibrary!');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: '✨ Book published successfully to Elibrary!',
+                        confirmButtonColor: '#006A4E',
+                        timer: 2500
+                    });
                     form.reset();
                 }
             })
             .catch((error) => {
                 console.error('Error posting book:', error);
-                alert(error.response?.data?.message || 'Something went wrong while publishing.');
+                const errorMsg = error.response?.data?.message || 'Something went wrong while publishing.';
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Publish Failed',
+                    text: errorMsg,
+                    confirmButtonColor: '#006A4E'
+                });
             })
             .finally(() => {
                 setLoading(false);
@@ -44,9 +63,8 @@ const AddBook = () => {
 
     return (
         <div className="min-h-[calc(100vh-80px)] bg-base-200 flex items-center justify-center px-4 py-8">
-            {/* Main responsive wrapper card */}
             <div className="card bg-base-100 w-full max-w-lg shadow-xl border border-base-300 overflow-hidden transform transition-all duration-300 hover:shadow-2xl">
-                
+
                 {/* Visual Header Banner */}
                 <div className="bg-[#006A4E] p-6 text-center text-white relative">
                     <h2 className="text-2xl md:text-3xl font-extrabold tracking-wide">Publish a Book</h2>
@@ -54,18 +72,18 @@ const AddBook = () => {
                 </div>
 
                 <form onSubmit={handleAddBook} className="card-body gap-4 p-6 md:p-8">
-                    
+
                     {/* Book Title Input Field */}
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text font-bold text-gray-700">Book Title</span>
                         </label>
-                        <input 
-                            type="text" 
-                            name="title" 
-                            placeholder="e.g., The Midnight Library" 
-                            className="input input-bordered w-full focus:outline-[#006A4E] transition-all" 
-                            required 
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="e.g., The Midnight Library"
+                            className="input input-bordered w-full focus:outline-[#006A4E] transition-all"
+                            required
                         />
                     </div>
 
@@ -74,12 +92,12 @@ const AddBook = () => {
                         <label className="label">
                             <span className="label-text font-bold text-gray-700">Cover Image URL</span>
                         </label>
-                        <input 
-                            type="url" 
-                            name="imgUrl" 
-                            placeholder="https://example.com/cover.jpg" 
-                            className="input input-bordered w-full focus:outline-[#006A4E] transition-all" 
-                            required 
+                        <input
+                            type="url"
+                            name="imgUrl"
+                            placeholder="https://example.com/cover.jpg"
+                            className="input input-bordered w-full focus:outline-[#006A4E] transition-all"
+                            required
                         />
                     </div>
 
@@ -89,11 +107,11 @@ const AddBook = () => {
                             <span className="label-text font-bold text-gray-700">Publisher Identity</span>
                         </label>
                         <div className="relative flex items-center">
-                            <input 
-                                type="email" 
-                                value={user?.email || "Login required"} 
-                                disabled 
-                                className="input input-bordered w-full bg-base-200 text-gray-500 font-semibold cursor-not-allowed pl-10" 
+                            <input
+                                type="email"
+                                value={user?.email || "Login required"}
+                                disabled
+                                className="input input-bordered w-full bg-base-200 text-gray-500 font-semibold cursor-not-allowed pl-10"
                             />
                             {/* Decorative mail icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 absolute left-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,8 +123,8 @@ const AddBook = () => {
                     {/* Safe Conditional Submit Button State */}
                     <div className="form-control mt-4">
                         {user ? (
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 disabled={loading}
                                 className="btn bg-[#006A4E] hover:bg-[#00533d] text-white border-none w-full shadow-md rounded-lg text-base font-bold transition-all normal-case"
                             >

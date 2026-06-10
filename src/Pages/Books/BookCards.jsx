@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const BookCards = ({ book }) => {
     // Destructuring properties safely from our single object prop layout
-    const { title, imgUrl, email } = book;
+    const { title, imgUrl, email,status,_id } = book;
+    console.log(_id)
 
     // Isolate username handles out of emails for cleaner badge labels
     const displayContributor = email ? email.split('@')[0] : 'Anonymous';
@@ -42,10 +44,11 @@ const BookCards = ({ book }) => {
                 {/* Interactive Action Footers inside Cards */}
                 <div className="card-actions mt-4 pt-4 border-t border-base-200 flex items-center justify-between">
                     <span className="text-xs font-bold text-[#006A4E] bg-[#006A4E]/5 px-2.5 py-1 rounded-md">
-                        Digital Copy
+                        {status}
                     </span>
                     <button className="btn btn-sm bg-[#006A4E] hover:bg-[#00533d] text-white border-none normal-case rounded-lg shadow-sm transition-colors duration-200">
-                        View Details
+                        <Link to={`/request/${_id}`}>Request This</Link>
+
                     </button>
                 </div>
             </div>
@@ -53,5 +56,5 @@ const BookCards = ({ book }) => {
         </div>
     );
 };
-
+// 
 export default BookCards;

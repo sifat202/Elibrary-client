@@ -38,12 +38,12 @@ const Books = () => {
             {/* Main Content Grid Area */}
             <div className="max-w-7xl mx-auto">
                 {loading ? (
-                    /* Skeleton Loader Grid for Premium Loading UX */
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    /* Updated Skeleton Grid to show 2 columns on extra small/mobile screens */
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
                         {[1, 2, 3, 4].map((n) => (
-                            <div key={n} className="flex flex-col gap-4 w-full">
-                                <div className="skeleton h-72 w-full rounded-2xl"></div>
-                                <div className="skeleton h-4 w-28"></div>
+                            <div key={n} className="flex flex-col gap-3 w-full">
+                                <div className="skeleton h-44 sm:h-72 w-full rounded-2xl"></div>
+                                <div className="skeleton h-4 w-20 sm:w-28"></div>
                                 <div className="skeleton h-4 w-full"></div>
                             </div>
                         ))}
@@ -58,8 +58,8 @@ const Books = () => {
                         <p className="text-gray-500 text-sm mt-1">Be the very first community member to publish a book to this shelf!</p>
                     </div>
                 ) : (
-                    /* Clean Mapping Strategy: Pass down individual items as a 'book' prop */
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    /* Updated Content Grid: changed 'grid-cols-1' to 'grid-cols-2' and adapted responsive gap rules */
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
                         {books.map((item) => (
                             <BookCards key={item._id} book={item} />
                         ))}

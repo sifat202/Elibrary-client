@@ -7,7 +7,7 @@ const Navbar = () => {
     // Extract user state, login, and logout methods from your custom hook
     const { user, signInWithGoogle, logoutUser } = useAuth();
     const NavbarLinks = <>
-        <Link to={'/home'}>Home</Link>
+        <Link to={'/'}>Home</Link>
         <Link to={'/books'}>Books</Link>
         <Link to={'/tutorial'}>Tutorial</Link>
 

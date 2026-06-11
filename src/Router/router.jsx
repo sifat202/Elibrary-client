@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
     element: <Homelayout />, // <-- Add the angle brackets here!
     children:[
         {
-            path:"/home",
+            path:"/",
             element:<Home></Home>
         },
         {

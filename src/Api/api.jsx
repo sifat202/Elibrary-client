@@ -8,7 +8,7 @@ const api = axios.create({
   },
   // Timeout is set in milliseconds. 
   // 15000ms = 15 seconds. Give your slow laptop plenty of time to respond!
-  timeout: 25000, 
+  timeout: 35000, 
 });
 
 export default api;

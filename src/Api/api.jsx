@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Create a configured instance of axios
 const api = axios.create({
-  baseURL: 'http://localhost:5000', 
+  // baseURL: 'http://localhost:5000', 
+   baseURL: 'https://elibrary-server-3y49-7rhh0bq9v-shifat-ahmeds-projects-b2b7efe5.vercel.app', 
   headers: {
     'Content-Type': 'application/json',
   },

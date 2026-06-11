@@ -1,12 +1,14 @@
 import axios from "axios";
 
-
 // Create a configured instance of axios
 const api = axios.create({
-  baseURL: 'https://elibrary-server-3y49-7rhh0bq9v-shifat-ahmeds-projects-b2b7efe5.vercel.app', // Your centralized base URL
+  baseURL: 'https://elibrary-server-3y49-7rhh0bq9v-shifat-ahmeds-projects-b2b7efe5.vercel.app', 
   headers: {
     'Content-Type': 'application/json',
   },
+  // Timeout is set in milliseconds. 
+  // 15000ms = 15 seconds. Give your slow laptop plenty of time to respond!
+  timeout: 25000, 
 });
 
 export default api;

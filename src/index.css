@@ -1,4 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --animate-marquee: marquee 25s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-50%); }
+  }
+}
 @plugin "daisyui" {
   /* Add your custom theme name to the enabled list */
   themes: light --default, dark, bd-elibrary; 

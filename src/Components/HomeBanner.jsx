@@ -7,7 +7,7 @@ import img4 from '../assets/HomeBanner/Gemini_Generated_Image_gtej2rgtej2rgtej.p
 import img5 from '../assets/HomeBanner/Gemini_Generated_Image_tanpchtanpchtanp.png';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules'; 
+import { Navigation, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -22,25 +22,25 @@ const HomeBanner = () => {
     ];
 
     return (
-        <Swiper 
-            navigation={false} 
-            pagination={false} 
-            loop={true} 
-            autoplay={{ 
-                delay: 2000, 
-                disableOnInteraction: false, 
+        <Swiper
+            navigation={false}
+            pagination={false}
+            loop={true}
+            autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
             }}
-            modules={[Navigation, Autoplay]} 
+            modules={[Navigation, Autoplay]}
             /* max-w-[1200px]: Keeps it at exactly 1200px max on desktop screens */
             /* mx-auto: Centers the entire swiper container when the screen is wider than 1200px */
-            className="mySwiper w-full max-w-[900px] max-h-[400px] mx-auto  h-[220px] sm:h-[320px] md:h-[400px] lg:h-[450px] rounded-xl overflow-hidden shadow-md my-4"
+            className="mySwiper w-full max-w-[820px] max-h-[350px] mx-auto  h-[220px] sm:h-[320px] md:h-[400px] lg:h-[450px] rounded-xl overflow-hidden shadow-md mt-4 mb-2"
         >
             {bannerImages.map((image, index) => (
                 <SwiperSlide key={index}>
-                    <img 
-                        src={image.src} 
-                        alt={image.alt} 
-                        className="w-full h-full object-cover object-center block" 
+                    <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover object-center block"
                     />
                 </SwiperSlide>
             ))}

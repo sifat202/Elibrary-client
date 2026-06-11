@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const BookCards = ({ book }) => {
+const FreeCards = ({ book }) => {
     // Destructuring properties safely from our single object prop layout
     const { title, imgUrl, email,status,_id } = book;
     console.log(_id)
@@ -43,19 +43,11 @@ const BookCards = ({ book }) => {
                 </div>
 
                 {/* Interactive Action Footers inside Cards */}
-                <div className="card-actions mt-4 pt-4 border-t border-base-200 flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#006A4E] bg-[#006A4E]/5 px-2.5 py-1 rounded-md">
-                        {status}
-                    </span>
-                    <button className="btn btn-sm bg-[#006A4E] hover:bg-[#00533d] text-white border-none normal-case rounded-lg shadow-sm transition-colors duration-200">
-                        <Link to={`/request/${_id}`}>Request This</Link>
-
-                    </button>
-                </div>
+                
             </div>
 
         </div>
     );
 };
 // 
-export default BookCards;
+export default FreeCards;

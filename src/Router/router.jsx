@@ -5,6 +5,7 @@ import AddBook from "../Pages/AddBooks";
 import Books from "../Pages/Books/Books";
 import ManageBooks from "../Pages/Manage/ManageBooks";
 import placeRequests from "../Pages/RequestBook/placeRequests";
+import Tutorial from "../Pages/Tutorial/Tutorial";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,9 @@ export const router = createBrowserRouter([
         {
             path:"/",
             element:<Home></Home>
+        },
+        {path:'/tutorial',
+            element:<Tutorial></Tutorial>
         },
         {
             path:"/addBooks",
